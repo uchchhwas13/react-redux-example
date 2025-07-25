@@ -1,8 +1,7 @@
 // src/components/Counter.jsx
 import { useState } from "react";
 
-export default function Counter({ label, onIncrement, onDecrement }) {
-  const [count, setCount] = useState(0);
+export default function Counter({ count, label, onIncrement, onDecrement }) {
 
   return (
     <div className="bg-white shadow-lg rounded-xl p-6 w-64 text-center">
