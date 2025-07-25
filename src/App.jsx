@@ -1,40 +1,30 @@
-import { useState } from 'react';
 import Counter from './Counter';
 import TotalCounter from './TotalCounter';
+import { useSelector } from 'react-redux';
 
-const initialCounters = [
-  {
-    id: 1,
-    value: 0,
-  },
-  {
-    id: 2,
-    value: 0,
-  },
-];
 function App() {
-  const [counters, setCounter] = useState(initialCounters);
+  const counters = useSelector((state)=> state.counters)
   const totalCount = counters.reduce((sum, current) => sum + current.value, 0);
 
   const handleIncrement = (counterId) => {
-  const updatedCounters = counters.map((counter) => {
-    if (counter.id === counterId) {
-      return { ...counter, value: counter.value + 1 };
-    }
-    return counter; 
-  });
-  setCounter(updatedCounters);
-};
+    const updatedCounters = counters.map((counter) => {
+      if (counter.id === counterId) {
+        return { ...counter, value: counter.value + 1 };
+      }
+      return counter;
+    });
+    //setCounter(updatedCounters);
+  };
 
-const handleDecrement = (counterId) => {
-  const updatedCounters = counters.map((counter) => {
-    if (counter.id === counterId) {
-      return { ...counter, value: counter.value - 1 };
-    }
-    return counter;
-  });
-  setCounter(updatedCounters);
-};
+  const handleDecrement = (counterId) => {
+    const updatedCounters = counters.map((counter) => {
+      if (counter.id === counterId) {
+        return { ...counter, value: counter.value - 1 };
+      }
+      return counter;
+    });
+    //setCounter(updatedCounters);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-10">
