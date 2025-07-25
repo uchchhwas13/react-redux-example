@@ -13,7 +13,7 @@ const initialCounters = [
 
 const countersSlice = createSlice({
     name: "counters",
-    initialCounters,
+    initialState: initialCounters,
     reducers:{
         increment: (state, action) => {
             const counterIndex = state.findIndex(c => c.id === action.payload)
