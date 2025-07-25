@@ -16,11 +16,27 @@ function App() {
   const [counters, setCounter] = useState(initialCounters);
   
   const handleIncrement = (counterId) => {
-
+    let updatedCounters = counters.map(counter => {
+      if(counter.id == counterId) {
+        return {
+          ...counter,
+          value: counter.value+1
+        }
+      }
+    })
+    setCounter(updatedCounters);
   };
 
   const handleDecrement = (counterId) => {
-
+  let updatedCounters = counters.map(counter => {
+      if(counter.id == counterId) {
+        return {
+          ...counter,
+          value: counter.value-1
+        }
+      }
+    })
+    setCounter(updatedCounters);
   };
    
   return (
@@ -28,8 +44,10 @@ function App() {
       <div className="flex gap-8 flex-wrap justify-center">
         {
           counters.map((counter) => (
-            <Counter key={counter.id} label={"Counter " + counter.id} onIncrement = {handleIncrement} 
-                      onDecrement={handleDecrement}/>
+            <Counter key={counter.id} 
+                     label={"Counter " + counter.id} 
+                     onIncrement = {() => handleIncrement(counter.id)} 
+                     onDecrement={() => handleDecrement(counter.id)}/>
           ))
         }
 
