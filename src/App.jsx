@@ -1,3 +1,4 @@
+import Posts from './components/Posts';
 import Counter from './Counter';
 import { decrement, increment } from './features/counters/countersSlice';
 import TotalCounter from './TotalCounter';
@@ -30,6 +31,8 @@ function App() {
         ))}
 
         <TotalCounter total={totalCount} />
+
+        <Posts />
       </div>
     </div>
   );
