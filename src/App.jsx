@@ -21,7 +21,7 @@ function App() {
     if (counter.id === counterId) {
       return { ...counter, value: counter.value + 1 };
     }
-    return counter; // return unchanged counter
+    return counter; 
   });
   setCounter(updatedCounters);
 };
@@ -31,7 +31,7 @@ const handleDecrement = (counterId) => {
     if (counter.id === counterId) {
       return { ...counter, value: counter.value - 1 };
     }
-    return counter; // return unchanged counter
+    return counter;
   });
   setCounter(updatedCounters);
 };
