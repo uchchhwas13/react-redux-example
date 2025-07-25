@@ -1,29 +1,19 @@
 import Counter from './Counter';
+import { decrement, increment } from './features/counters/countersSlice';
 import TotalCounter from './TotalCounter';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
   const counters = useSelector((state)=> state.counters)
+  const dispatch = useDispatch();
   const totalCount = counters.reduce((sum, current) => sum + current.value, 0);
 
   const handleIncrement = (counterId) => {
-    const updatedCounters = counters.map((counter) => {
-      if (counter.id === counterId) {
-        return { ...counter, value: counter.value + 1 };
-      }
-      return counter;
-    });
-    //setCounter(updatedCounters);
+    dispatch(increment(counterId));
   };
 
   const handleDecrement = (counterId) => {
-    const updatedCounters = counters.map((counter) => {
-      if (counter.id === counterId) {
-        return { ...counter, value: counter.value - 1 };
-      }
-      return counter;
-    });
-    //setCounter(updatedCounters);
+    dispatch(decrement(counterId));
   };
 
   return (
