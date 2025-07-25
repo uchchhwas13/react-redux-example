@@ -22,7 +22,7 @@ export default function Posts() {
     content = (
       <ul>
         {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
+          <li className="border border-gray-400 text-blue-400 p-2 m-2" key={post.id}>{post.title}</li>
         ))}
       </ul>
     );
